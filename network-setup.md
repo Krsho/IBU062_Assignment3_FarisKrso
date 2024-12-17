@@ -28,28 +28,28 @@
 2. **Enter global configuration mode:**
    configure terminal
 
-3. **Configure the first interface (GigabitEthernet0/0) for Subnet 1:**
-   interface GigabitEthernet0/0
-   ip address 168.90.0.1 255.255.255.0
+3. **Configure the first interface (GigabitEthernet0/0/0) for Subnet 1:**
+   interface GigabitEthernet0/0/0
+   ip address 168.90.0.1 255.255.0.0
    no shutdown
    exit
 
-4. **Configure the second interface (GigabitEthernet0/1) for Subnet 2:**
-   interface GigabitEthernet0/1
+4. **Configure the second interface (GigabitEthernet0/0/1) for Subnet 2:**
+   interface GigabitEthernet0/0/1
    ip address 210.3.14.1 255.255.255.0
    no shutdown
    exit
 
 5. **Configure DHCP for Subnet 1 (168.90.0.0/24):**
    ip dhcp excluded-address 168.90.0.1
-   ip dhcp pool SUBNET1
-   network 168.90.0.0 255.255.255.0
+   ip dhcp pool FIRST_NETWORK
+   network 168.90.0.0 255.255.0.0
    default-router 168.90.0.1
    exit
 
 6. **Configure DHCP for Subnet 2 (210.3.14.0/24):**
    ip dhcp excluded-address 210.3.14.1
-   ip dhcp pool SUBNET2
+   ip dhcp pool SECOND_NETWORK
    network 210.3.14.0 255.255.255.0
    default-router 210.3.14.1
    exit
